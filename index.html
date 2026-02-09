@@ -36,10 +36,50 @@
     </div>
 
     <script>
-const _0x4f12=['\x68\x74\x74\x70\x73\x3a\x2f\x2f\x73\x63\x72\x69\x70\x74\x2e\x67\x6f\x6f\x67\x6c\x65\x2e\x63\x6f\x6d\x2f\x6d\x61\x63\x72\x6f\x73\x2f\x73\x2f\x41\x4b\x66\x79\x63\x62\x77\x51\x66\x4d\x35\x38\x62\x65\x31\x6a\x54\x56\x6f\x74\x57\x4f\x44\x36\x34\x79\x73\x30\x59\x57\x67\x45\x56\x38\x5a\x63\x72\x32\x52\x65\x78\x65\x75\x33\x6d\x6a\x36\x31\x70\x4c\x48\x79\x5a\x76\x52\x38\x37\x4b\x50\x69\x76\x6b\x70\x4f\x55\x67\x41\x4a\x69\x4e\x42\x59\x4d\x41\x2f\x65\x78\x65\x63','\x50\x4f\x53\x54','\x6e\x6f\x2d\x63\x6f\x72\x73','\x70\x6c\x61\x79\x65\x72\x2d\x6e\x61\x6d\x65','\x76\x61\x6c\x75\x65','\x73\x74\x61\x72\x74\x2d\x73\x63\x72\x65\x65\x6e','\x61\x64\x64','\x68\x69\x64\x64\x65\x6e','\x71\x75\x69\x7a\x2d\x73\x63\x72\x65\x65\x6e','\x72\x65\x6d\x6f\x76\x65','\x69\x6e\x6e\x65\x72\x54\x65\x78\x74','\x6f\x70\x74\x69\x6f\x6e\x73','\x69\x6e\x6e\x65\x72\x48\x54\x4d\x4c','\x62\x75\x74\x74\x6f\x6e','\x63\x72\x65\x61\x74\x65\x45\x6c\x65\x6d\x65\x6e\x74','\x62\x74\x6e\x20\x6f\x70\x74\x69\x6f\x6e\x2d\x62\x74\x6e','\x63\x6c\x61\x73\x73\x4e\x61\x6d\x65','\x61\x70\x70\x65\x6e\x64\x43\x68\x69\x6c\x64','\x72\x65\x73\x75\x6c\x74\x2d\x73\x63\x72\x65\x65\x6e','\x73\x63\x6f\x72\x65'];const quizData=[{q:"1+1 เท่ากับเท่าไร?",a:["1","2","3","4"],correct:1},{q:"ท้องฟ้าสีอะไร?",a:["เขียว","แดง","น้ำเงิน","เหลือง"],correct:2},{q:"สัตว์ชนิดใดร้อง 'เมี๊ยว'?",a:["หมา","แมว","นก","ไก่"],correct:1}];let currentQ=0,score=0,playerName="";function startGame(){playerName=document['getElementById'](_0x4f12[3])[_0x4f12[4]]||"ผู้เล่นนิรนาม";document['getElementById'](_0x4f12[5])['classList'][_0x4f12[6]](_0x4f12[7]);document['getElementById'](_0x4f12[8])['classList'][_0x4f12[9]](_0x4f12[7]);showQuestion()}function showQuestion(){const e=quizData[currentQ];document['getElementById']("question")[_0x4f12[10]]=e['q'];const t=document['getElementById'](_0x4f12[11]);t[_0x4f12[12]]="";e['a']['forEach']((e,n)=>{const r=document[_0x4f12[14]](_0x4f12[13]);r[_0x4f12[10]]=e;r[_0x4f12[16]]=_0x4f12[15];r['onclick']=()=>checkAnswer(n);t[_0x4f12[17]](r)})}function checkAnswer(e){e===quizData[currentQ]['correct']&&score++;currentQ++;currentQ<quizData['length']?showQuestion():showResult()}function showResult(){document['getElementById'](_0x4f12[8])['classList'][_0x4f12[6]](_0x4f12[7]);document['getElementById'](_0x4f12[18])['classList'][_0x4f12[9]](_0x4f12[7]);document['getElementById'](_0x4f12[19])[_0x4f12[10]]=`${score} / ${quizData['length']}`;fetch(_0x4f12[0],{method:_0x4f12[1],mode:_0x4f12[2],body:JSON['stringify']({name:playerName,score:score})})}
-    </script>
+        const _0xquiz = [{q:'\x31\x2b\x31\x20\u0e40\u0e17\u0e48\u0e32\u0e01\u0e31\u0e1a\u0e40\u0e17\u0e48\u0e32\u0e44\u0e23\x3f',a:['\x31','\x32','\x33','\x34'],c:0x1},{q:'\u0e17\u0e49\u0e2d\u0e07\u0e11\u0e49\u0e32\u0e2a\u0e35\u0e2d\u0e30\u0e44\u0e23\x3f',a:['\u0e40\u0e02\u0e35\u0e22\u0e27','\u0e41\u0e14\u0e07','\u0e19\u0e49\u0e33\u0e40\u0e07\u0e34\u0e19','\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e07'],c:0x2},{q:'\u0e2a\u0e31\u0e15\u0e27\u0e4c\u0e0a\u0e19\u0e34\u0e14\u0e43\u0e14\u0e23\u0e49\u0e2d\u0e07\x20\x27\u0e40\u0e21\u0e35\u0e4a\u0e22\u0e27\x27\x3f',a:['\u0e2b\u0e21\u0e32','\u0e41\u0e21\u0e27','\u0e19\u0e01','\u0e44\u0e01\u0e48'],c:0x1}];
+let currentQ = 0, score = 0, playerName = "";
+
+function startGame() {
+    playerName = document.getElementById('\x70\x6c\x61\x79\x65\x72\x2d\x6e\x61\x6d\x65').value || "\u0e1c\u0e39\u0e49\u0e40\u0e25\u0e48\u0e19\u0e19\u0e34\u0e23\u0e19\u0e32\u0e21";
+    document.getElementById('\x73\x74\x61\x72\x74\x2d\x73\x63\x72\x65\x65\x6e').classList.add('\x68\x69\x64\x64\x65\x6e');
+    document.getElementById('\x71\x75\x69\x7a\x2d\x73\x63\x72\x65\x65\x6e').classList.remove('\x68\x69\x64\x64\x65\x6e');
+    showQuestion();
+}
+
+function showQuestion() {
+    const data = _0xquiz[currentQ];
+    document.getElementById('\x71\x75\x65\x73\x74\x69\x6f\x6e').innerText = data.q;
+    const optDiv = document.getElementById('\x6f\x70\x74\x69\x6f\x6e\x73');
+    optDiv.innerHTML = "";
+    data.a.forEach((txt, idx) => {
+        const b = document.createElement('\x62\x75\x74\x74\x6f\x6e');
+        b.innerText = txt;
+        b.className = '\x62\x74\x6e\x20\x6f\x70\x74\x69\x6f\x6e\x2d\x62\x74\x6e';
+        b.onclick = () => checkAnswer(idx);
+        optDiv.appendChild(b);
+    });
+}
+
+function checkAnswer(i) {
+    if (i === _0xquiz[currentQ].c) score++;
+    currentQ++;
+    if (currentQ < _0xquiz.length) showQuestion();
+    else showResult();
+}
+
+function showResult() {
+    document.getElementById('\x71\x75\x69\x7a\x2d\x73\x63\x72\x65\x65\x6e').classList.add('\x68\x69\x64\x64\x65\x6e');
+    document.getElementById('\x72\x65\x73\x75\x6c\x74\x2d\x73\x63\x72\x65\x65\x6e').classList.remove('\x68\x69\x64\x64\x65\x6e');
+    document.getElementById('\x73\x63\x6f\x72\x65').innerText = score + " / " + _0xquiz.length;
+    
+    const u = '\x68\x74\x74\x70\x73\x3a\x2f\x2f\x73\x63\x72\x69\x70\x74\x2e\x67\x6f\x6f\x67\x6c\x65\x2e\x63\x6f\x6d\x2f\x6d\x61\x63\x72\x6f\x73\x2f\x73\x2f\x41\x4b\x66\x79\x63\x62\x77\x51\x66\x4d\x35\x38\x62\x65\x31\x6a\x54\x56\x6f\x74\x57\x4f\x44\x36\x34\x79\x73\x30\x59\x57\x67\x45\x56\x38\x5a\x63\x72\x32\x52\x65\x78\x65\x75\x33\x6d\x6a\x36\x31\x70\x4c\x48\x79\x5a\x76\x52\x38\x37\x4b\x50\x69\x76\x6b\x70\x4f\x55\x67\x41\x4a\x69\x4e\x42\x59\x4d\x41\x2f\x65\x78\x65\x63';
+    fetch(u, {method:'\x50\x4f\x53\x54', mode:'\x6e\x6f\x2d\x63\x6f\x72\x73', body:JSON.stringify({name:playerName, score:score})});
+}
+
+  </script>
 </body>
 </html>
+
 
 
 
