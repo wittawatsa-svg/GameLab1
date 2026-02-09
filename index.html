@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Quiz Game</title>
+    <style>
+        /* --- ก๊อบปี้โค้ดจากช่อง CSS ใน CodePen มาวางตรงนี้ --- */
+        body { font-family: 'Sarabun', sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding-top: 50px; }
+        #game-container { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 500px; text-align: center; }
+        .btn { background: #4A90E2; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 16px; margin: 10px; transition: 0.3s; }
+        .btn:hover { background: #357ABD; }
+        .option-btn { display: block; width: 100%; margin: 10px 0; background: #fff; color: #333; border: 2px solid #4A90E2; }
+        .option-btn:hover { background: #E1F5FE; }
+        #score-display { font-size: 24px; font-weight: bold; color: #4CAF50; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- --- ก๊อบปี้โค้ดจากช่อง HTML ใน CodePen มาวางตรงนี้ --- -->
+    <div id="game-container">
+        <div id="start-screen">
+            <h1>เกมตอบคำถาม 🧠</h1>
+            <input type="text" id="player-name" placeholder="ใส่ชื่อของคุณที่นี่" style="padding: 10px; width: 80%; border-radius: 5px; border: 1px solid #ccc;"><br>
+            <button class="btn" onclick="startGame()">เริ่มเกมเลย!</button>
+        </div>
+        <div id="quiz-screen" class="hidden">
+            <h2 id="question">คำถามจะปรากฏที่นี่</h2>
+            <div id="options"></div>
+        </div>
+        <div id="result-screen" class="hidden">
+            <h2>จบเกมแล้ว!</h2>
+            <p id="final-status" style="font-size: 1.2rem;"></p>
+            <div id="score-display">คะแนนของคุณ: <span id="score">0</span></div>
+            <button class="btn" onclick="location.reload()">เล่นใหม่อีกครั้ง</button>
+        </div>
+    </div>
+
+    <script>
+        // --- ก๊อบปี้โค้ดจากช่อง JS ใน CodePen มาวางตรงนี้ ---
+        // (รวมถึงส่วนที่มี scriptURL ของ Google Sheets ด้วยนะครับ)
+        
+        // ตัวอย่างโค้ด JS ที่คุณใช้ (เช็ค URL ให้ถูกต้องด้วย)
+        const quizData = [
+            { q: "1+1 เท่ากับเท่าไร?", a: ["1", "2", "3", "4"], correct: 1 },
+            { q: "ท้องฟ้าสีอะไร?", a: ["เขียว", "แดง", "น้ำเงิน", "เหลือง"], correct: 2 },
+            { q: "สัตว์ชนิดใดร้อง 'เมี๊ยว'?", a: ["หมา", "แมว", "นก", "ไก่"], correct: 1 }
+        ];
+
+        let currentQ = 0, score = 0, playerName = "";
+
+        function startGame() {
+            playerName = document.getElementById('player-name').value || "ผู้เล่นนิรนาม";
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = quizData[currentQ];
+            document.getElementById('question').innerText = q.q;
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            q.a.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.innerText = opt; btn.className = 'btn option-btn';
+                btn.onclick = () => checkAnswer(index);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(idx) {
+            if (idx === quizData[currentQ].correct) score++;
+            currentQ++;
+            if (currentQ < quizData.length) showQuestion();
+            else showResult();
+        }
+
+        function showResult() {
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+            document.getElementById('score').innerText = `${score} / ${quizData.length}`;
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwQfM58be1jTVotWOD64ys0YWgEV8Zcr2Rexeu3mj61pLHyZvR87KPivkpOUgAJiNBYMA/exec'; 
+            
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify({ name: playerName, score: score }),
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
